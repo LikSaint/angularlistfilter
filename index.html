@@ -1,0 +1,122 @@
+<!doctype html>
+<html ng-app="purchaseApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> 
+    <link rel="stylesheet" href="css/style.css">    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-route.js"></script>
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.3.1.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/dirPagination.js"></script>
+</head>
+<body ng-controller="purchaseController">
+    <header class="headerContainer static-top">
+        <div class="container" >
+            <div class="row">
+                <div class="imageCont">
+                    <div class="image"></div>
+                </div>
+
+                <div class="totalCont">
+                    <div class="total">
+                        {{total.toFixed(2)}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="mainContent">
+        <table class="table ">
+            <thead>
+                <tr>                    
+                    <td>
+                        <span>
+                        <a href="" ng-click="sort('id')">id
+                            <span class="fa-stack">
+                                <i class="fa fa-caret-up fa-stack-1x colorRed upCaret" ng-class="{'colorWhite': isSortUp('id')}"></i>
+                                <i class="fa fa-caret-down fa-stack-1x colorRed downCaret" ng-class="{'colorWhite' : isSortDown('id')}"></i>
+                            </span>
+                        </a></span>
+                    </td>
+                    <td>
+                        <span><a href="" ng-click="sort('money')">Средства
+                            <span class="fa-stack">
+                                <i class="fa fa-caret-up fa-stack-1x colorRed upCaret" ng-class="{'colorWhite': isSortUp('money')}"></i>
+                                <i class="fa fa-caret-down fa-stack-1x colorRed downCaret" ng-class="{'colorWhite' : isSortDown('money')}"></i>
+                            </span>
+                        </a></span>
+                    </td>
+                    <td><span>Комментарий</span>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr dir-paginate="item in list.items | orderBy:sortField:reverse | itemsPerPage:10">
+                    <td> <span><a href="" ng-click="open(item.id)">{{item.id}} </a></span></td>
+                    <td><span>{{item.money}}</span></td>
+                    <td><span>{{item.comment}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+
+            <div class="form-group">
+                <div class="bottomButtons">
+                    <button class="btn btn-default addButton" ng-click="open()">Добавить</button>
+                    <dir-pagination-controls
+                            max-size="5"
+                            direction-links="true"
+                            boundary-links="true" >
+                    </dir-pagination-controls>
+                </div>
+            </div>
+
+        <script type="text/ng-template" id="myModalContent.html">
+            <form name="modalForm">
+                <div class="modal-header">
+                    <h3 class="modal-title"  ng-click="login(modalForm)">Запись # {{currentID}}</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="moneyCont">
+                            <input class="form-control" name="money" ng-model="money" placeholder="Средства" moneycheck required>
+                                <div class="errorComment" ng-show="(modalForm.addButton.$touched && modalForm.money.$invalid) || modalForm.$error.moneycheck" >
+                                <span class="errorNote">!</span>
+                                <span>Неверное значение</span>
+                                <span class="arrow-left"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="commentCont">
+                            <textarea class="form-control textArea" name="comment" ng-model="comment" placeholder = "Комментарий" rows="6"  commentcheck required></textarea>
+                            <div class="errorComment" ng-show="(modalForm.addButton.$touched && modalForm.comment.$invalid) || modalForm.$error.commentcheck">
+                                <span class="errorNote">!</span>
+                                <span>Неверное значение</span>
+                                <span class="arrow-left"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="addCont">
+                            <button class="btn btn-default addButton" ng-click="addItem(modalForm)" ng-model="addButton" name="addButton" formnovalidate>Сохранить</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="cancelCont">
+                            <button class="btn btn-default cancelButton" ng-click="cancel()" formnovalidate>Отменить</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </script>
+    </div>
+</body>
+</html>
