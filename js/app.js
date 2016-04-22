@@ -5,32 +5,14 @@ purchaseApp.controller('purchaseController', function ($scope, $uibModal, $log) 
     $scope.list = {
         items: [
             {id: 1, money: 842.00, comment: 'Комментарий 1'},
-            {id: 2, money: -15.01, comment: 'Комментарий 2'},
-            {id: 3, money: -15.01, comment: 'Комментарий 2'},
-            {id: 4, money: -15.01, comment: 'Комментарий 2'},
-            {id: 5, money: -15.01, comment: 'Комментарий 2'},
-            {id: 6, money: -15.01, comment: 'Комментарий 2'},
-            {id: 7, money: -15.01, comment: 'Комментарий 2'},
-            {id: 8, money: -15.01, comment: 'Комментарий 2'},
-            {id: 9, money: -15.01, comment: 'Комментарий 2'},
-            {id: 10, money: -15.01, comment: 'Комментарий 2'},
-            {id: 11, money: -15.01, comment: 'Комментарий 2'},
-            {id: 12, money: -15.01, comment: 'Комментарий 2'},
-            {id: 13, money: -15.01, comment: 'Комментарий 2'},
-            {id: 14, money: -15.01, comment: 'Комментарий 2'},
-            {id: 15, money: -15.01, comment: 'Комментарий 2'},
-            {id: 16, money: -15.01, comment: 'Комментарий 2'},
-            {id: 17, money: -15.01, comment: 'Комментарий 2'},
-            {id: 18, money: -15.01, comment: 'Комментарий 2'},
-            {id: 19, money: -15.01, comment: 'Комментарий 2'},
-            {id: 20, money: -15.01, comment: 'Комментарий 2'},
-            {id: 21, money: 125.25, comment: 'Комментарий 3'},
-            {id: 22, money: 125.25, comment: 'Комментарий 3'},
-            {id: 23, money: 125.25, comment: 'Комментарий 3'},
-            {id: 24, money: 125.25, comment: 'Комментарий 3'},
-            {id: 25, money: 125.25, comment: 'Комментарий 3'},
-            {id: 26, money: 125.25, comment: 'Комментарий 3'},
-            {id: 27, money: 125.25, comment: 'Комментарий 3'}
+            {id: 2, money: -15.01, comment: 'Вася'},
+            {id: 3, money: -11.11, comment: 'Оля'},
+            {id: 4, money: 113.05, comment: 'Виктор'},
+            {id: 5, money: -42.15, comment: 'Игорь'},
+            {id: 6, money: -12.56, comment: 'Комментарий 2'},
+            {id: 7, money: 15.34, comment: 'Олег'},
+            {id: 8, money: -29.46, comment: 'Валера'},
+            {id: 9, money: 125.66, comment: 'Аркадий'}
         ]
     };
     $scope.animationsEnabled = true;

@@ -21,6 +21,11 @@
                     <div class="image"></div>
                 </div>
 
+
+                <div class="searchCont">
+                    <input type="text" ng-model="search" placeholder="Поиск по комментариям">
+                </div>
+
                 <div class="totalCont">
                     <div class="total">
                         {{total.toFixed(2)}}
@@ -56,7 +61,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr dir-paginate="item in list.items | orderBy:sortField:reverse | itemsPerPage:10">
+                <tr dir-paginate="item in list.items | orderBy:sortField:reverse | itemsPerPage:10 | filter:{comment:search} ">
                     <td> <span><a href="" ng-click="open(item.id)">{{item.id}} </a></span></td>
                     <td><span>{{item.money}}</span></td>
                     <td><span>{{item.comment}}</span></td>
